@@ -1,6 +1,23 @@
 function hasTargetSum(array, target) {
   // Write your algorithm here
+let sum = [];
+
+let hashTable = {};
+
+for (let i=0; i<array.length; i++){
+  let sumMinus= target-array[i];
+  
+  if (hashTable[sumMinus.toString()] !== undefined){
+    sum.push([array[i]],sumMinus);
+    return true;
+    
+
+  }
+  hashTable[array[i].toString()] = array[i];
 }
+return false;
+}
+hasTargetSum([3, 8, 12, 4, 11, 7], 10);
 
 /* 
   Write the Big O time complexity of your function here
@@ -8,6 +25,13 @@ function hasTargetSum(array, target) {
 
 /* 
   Add your pseudocode here
+  check each element in array
+  calculate S - current element
+  check if this number exists in hash table
+     if so then we found a pair of numbers that sum to target
+     add the current number to the hash table
+     return all pairs of integers that sum to target
+
 */
 
 /*
